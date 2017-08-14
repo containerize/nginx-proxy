@@ -1,6 +1,9 @@
 FROM nginx:alpine
 
-ADD run.sh /run.sh
-ADD default.conf /etc/nginx/conf.d/default.conf
+ENV SERVER_PROXY_HOST=proxy
+ENV SERVER_PROXY_PORT=80
 
-CMD sh run.sh
+COPY run.sh /run.sh
+COPY default.conf /etc/nginx/conf.d/default.conf
+
+CMD ["run.sh"]
